@@ -1,8 +1,8 @@
 ---
 publishDate: 2025-12-29T02:00:00Z
-author: [Your Name]
-title: '[Your Article Title Here]'
-excerpt: '[Your article excerpt that describes what this post is about]'
+author: Your Name
+title: Your Article Title Here
+excerpt: Your article excerpt that describes what this post is about
 image: ../../assets/images/default.png
 tags:
   - Example Tag 1

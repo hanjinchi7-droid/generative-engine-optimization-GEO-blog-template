@@ -3,20 +3,20 @@
 # 📝 Frontmatter Configuration (Metadata)
 # -----------------------------------------------------------------------
 
-title: '[Your Article Title Here]'
+title: Your Article Title Here
 publishDate: 2026-01-02
-author: [Your Name]
+author: Your Name
 
 # 👇 [IMPORTANT] Cover Image Settings
 # Method A (Recommended): Local Image.
 # Place images in 'src/assets/images/'. Astro will automatically optimize & compress them.
-image: '~/assets/images/default.png'
+image: ~/assets/images/default.png
 
 # Method B (Optional): Remote URL.
 # Use a direct link. Convenient, but no automatic optimization.
 # image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c'
 
-excerpt: '[Your article excerpt that describes what this post is about]'
+excerpt: Your article excerpt that describes what this post is about
 
 tags:
   - Example Tag 1
