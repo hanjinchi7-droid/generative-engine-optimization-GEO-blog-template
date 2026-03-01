@@ -34,9 +34,9 @@ export const footerData = {
     {
       title: 'Connect',
       links: [
-        { text: 'GitHub', href: 'https://github.com/hanjinchi7-droid/Generative-Engine-Optimization-GEO-blog-template' },
-        { text: 'Reddit', href: 'https://www.reddit.com/r/recomby_ai/' },
-        { text: 'Email', href: 'mailto:contact@recomby.ai' },
+        { text: 'GitHub', href: 'https://github.com/your-username/your-repo' },
+        { text: 'Reddit', href: 'https://www.reddit.com/r/your_subreddit' },
+        { text: 'Email', href: 'mailto:your-email@example.com' },
       ],
     },
   ],
@@ -44,9 +44,9 @@ export const footerData = {
   secondaryLinks: [],
 
   socialLinks: [
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/hanjinchi7-droid/Generative-Engine-Optimization-GEO-blog-template' },
-    { ariaLabel: 'Reddit', icon: 'tabler:brand-reddit', href: 'https://www.reddit.com/r/recomby_ai/' },
-    { ariaLabel: 'Email', icon: 'tabler:mail', href: 'mailto:contact@recomby.ai' },
+    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/your-username/your-repo' },
+    { ariaLabel: 'Reddit', icon: 'tabler:brand-reddit', href: 'https://www.reddit.com/r/your_subreddit' },
+    { ariaLabel: 'Email', icon: 'tabler:mail', href: 'mailto:your-email@example.com' },
   ],
 
   footNote: `

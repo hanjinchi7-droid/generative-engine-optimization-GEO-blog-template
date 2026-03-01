@@ -11,6 +11,7 @@ export type Config = {
   };
   ui?: unknown;
   analytics?: unknown;
+  schema?: SchemaConfig;
 };
 
 export interface SiteConfig {
@@ -80,6 +81,24 @@ export interface AnalyticsConfig {
 
 export interface UIConfig {
   theme: string;
+}
+
+export interface SchemaConfig {
+  organization: {
+    name: string;
+    logo?: string;
+    email?: string;
+  };
+  social: {
+    github?: string;
+    reddit?: string;
+    twitter?: string;
+    linkedin?: string;
+  };
+  features: {
+    enableAutoDetection: boolean;
+    enableBreadcrumb: boolean;
+  };
 }
 
 const DEFAULT_SITE_NAME = 'Website';
@@ -193,6 +212,28 @@ const getAnalytics = (config: Config) => {
   return merge({}, _default, config?.analytics ?? {}) as AnalyticsConfig;
 };
 
+const getSchema = (config: Config) => {
+  const _default = {
+    organization: {
+      name: 'YOUR_SITE_NAME',
+      logo: '/favicon.svg',
+      email: 'YOUR_EMAIL@example.com',
+    },
+    social: {
+      github: 'https://github.com/YOUR_USERNAME',
+      reddit: 'https://reddit.com/r/YOUR_SUBREDDIT',
+      twitter: 'https://twitter.com/YOUR_HANDLE',
+      linkedin: 'https://linkedin.com/in/YOUR_PROFILE',
+    },
+    features: {
+      enableAutoDetection: true,
+      enableBreadcrumb: true,
+    },
+  };
+
+  return merge({}, _default, config?.schema ?? {}) as SchemaConfig;
+};
+
 export default (config: Config) => ({
   SITE: getSite(config),
   I18N: getI18N(config),
@@ -200,4 +241,5 @@ export default (config: Config) => ({
   APP_BLOG: getAppBlog(config),
   UI: getUI(config),
   ANALYTICS: getAnalytics(config),
+  SCHEMA: getSchema(config),
 });

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Content Manager | [Your Site Name]</title>
+
+  <!--
+    Decap CMS (formerly Netlify CMS)
+    This is the admin interface for managing your blog content.
+
+    Setup Instructions:
+    1. If using Netlify: Enable Identity in your Netlify dashboard
+    2. If using GitHub: Configure Git Gateway in Netlify settings
+    3. Update site_url in config.yml to match your domain
+  -->
+
+  <!-- Netlify Identity Widget for authentication -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+  <!-- Decap CMS from CDN -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <!-- Login redirect script -->
+  <!-- Redirects to admin page after successful login -->
+  <script>
+    // @ts-expect-error - Netlify Identity is loaded via CDN
+    const identity = window.netlifyIdentity;
+
+    if (identity) {
+      identity.on("init", (user) => {
+        if (!user) {
+          identity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+---
+/**
+ * TableOfContents Component
+ *
+ * 文章目录导航组件
+ * 功能：
+ *  - 自动过滤显示 h2, h3 标题
+ *  - 滚动时自动高亮当前章节
+ *  - 点击平滑滚动到对应位置
+ *  - 响应式设计（移动端隐藏）
+ */
+
+interface Props {
+  headings: Array<{
+    depth: number;
+    text: string;
+    slug: string;
+  }>;
+}
+
+const { headings } = Astro.props;
+
+// 只显示 h2 和 h3
+const tocHeadings = headings.filter(h => h.depth <= 3);
+---
+
+<aside class="toc-container">
+  <nav class="toc-nav">
+    <h2 class="toc-title">Table of Contents</h2>
+    <ul class="toc-list">
+      {tocHeadings.map((heading) => (
+        <li class={`toc-item depth-${heading.depth}`}>
+          <a href={`#${heading.slug}`} class="toc-link">
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</aside>
+
+<style>
+  .toc-container {
+    position: sticky;
+    top: 100px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    padding: 1.5rem 1rem;
+    border-left: 2px solid #f3f4f6;
+  }
+
+  :global(.dark) .toc-container {
+    border-left-color: rgb(51 65 85);
+  }
+
+  .toc-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+    margin-bottom: 1rem;
+  }
+
+  :global(.dark) .toc-title {
+    color: rgb(148 163 184);
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .toc-item {
+    margin-bottom: 0.5rem;
+  }
+
+  .toc-item.depth-2 {
+    padding-left: 0;
+  }
+
+  .toc-item.depth-3 {
+    padding-left: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .toc-link {
+    display: block;
+    color: #9ca3af;
+    text-decoration: none;
+    padding: 0.25rem 0;
+    border-left: 2px solid transparent;
+    padding-left: 0.75rem;
+    transition: all 0.2s;
+  }
+
+  :global(.dark) .toc-link {
+    color: rgb(148 163 184);
+  }
+
+  .toc-link:hover {
+    color: #6b7280;
+    border-left-color: #6b7280;
+  }
+
+  :global(.dark) .toc-link:hover {
+    color: rgb(203 213 225);
+    border-left-color: rgb(203 213 225);
+  }
+
+  .toc-link.active {
+    color: #4b5563;
+    border-left-color: #4b5563;
+    font-weight: 600;
+  }
+
+  :global(.dark) .toc-link.active {
+    color: rgb(226 232 240);
+    border-left-color: rgb(226 232 240);
+  }
+
+  .toc-container::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .toc-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .toc-container::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 2px;
+  }
+
+  :global(.dark) .toc-container::-webkit-scrollbar-thumb {
+    background: rgb(71 85 105);
+  }
+
+  @media (max-width: 1023px) {
+    .toc-container {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function initTOC() {
+    const links = document.querySelectorAll('.toc-link');
+    const headings = Array.from(document.querySelectorAll('h2[id], h3[id]')) as (HTMLElement & { id: string })[];
+
+    if (links.length === 0 || headings.length === 0) {
+      return;
+    }
+
+    function updateActiveLink() {
+      const scrollPos = window.scrollY + 150;
+      const viewportHeight = window.innerHeight;
+
+      let closestHeadingId: string | null = null;
+      let minDistance = Infinity;
+
+      headings.forEach((heading) => {
+        const rect = heading.getBoundingClientRect();
+        const headingTop = rect.top + scrollPos;
+
+        if (headingTop <= scrollPos + viewportHeight / 2) {
+          const distance = scrollPos - headingTop;
+          if (distance < minDistance && distance >= 0) {
+            minDistance = distance;
+            closestHeadingId = heading.id;
+          }
+        }
+      });
+
+      links.forEach(link => link.classList.remove('active'));
+
+      if (closestHeadingId) {
+        const activeLink = document.querySelector(`.toc-link[href="#${closestHeadingId}"]`);
+        activeLink?.classList.add('active');
+      }
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveLink();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href')?.slice(1);
+        const target = document.getElementById(targetId || '');
+        if (target) {
+          const offset = 80;
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          history.pushState(null, '', `#${targetId}`);
+        }
+      });
+    });
+
+    requestAnimationFrame(() => {
+      setTimeout(updateActiveLink, 100);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initTOC);
+  document.addEventListener('astro:page-load', initTOC);
+</script>

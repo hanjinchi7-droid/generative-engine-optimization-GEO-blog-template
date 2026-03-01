@@ -1,0 +1,281 @@
+# ==============================================================================
+# Decap CMS Configuration (formerly Netlify CMS)
+# ==============================================================================
+#
+# This file configures the Decap CMS admin interface for managing your blog.
+# All sensitive/real data has been replaced with placeholders - YOU MUST UPDATE
+# these values before deploying.
+#
+# Quick Start Guide:
+# 1. Backend Setup:
+#    - If using Netlify: Enable "Identity" and "Git Gateway" in Netlify dashboard
+#    - If using GitHub: Set up OAuth app and configure Netlify Identity
+#
+# 2. Update the placeholder values below marked with [YOUR_...]
+#
+# 3. Access the admin panel at: https://your-domain.com/admin/
+#
+# Documentation: https://decapcms.org/docs/intro/
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Backend Configuration
+# ------------------------------------------------------------------------------
+# For Netlify: Uses Git Gateway (requires Netlify Identity enabled)
+# For GitHub: Can use git-gateway with OAuth or direct GitHub backend
+backend:
+  name: git-gateway
+  branch: main
+
+  # ==============================================================================
+  # ⚠️ REQUIRED: Replace with your actual GitHub repository
+  # Format: username/repository-name
+  # Example: github: johndoe/my-awesome-blog
+  # ==============================================================================
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME
+
+# ------------------------------------------------------------------------------
+# Site URLs Configuration
+# ------------------------------------------------------------------------------
+# ==============================================================================
+# ⚠️ REQUIRED: Replace with your actual domain
+#
+# site_url: Your live website URL (used for preview in CMS)
+# display_url: Displayed in the CMS interface
+# cms_url: Optional - Separate domain for admin panel (if you have one)
+# ==============================================================================
+site_url: https://your-domain.com
+display_url: https://your-domain.com
+cms_url: https://admin.your-domain.com
+
+# ------------------------------------------------------------------------------
+# Media Folder Configuration
+# ------------------------------------------------------------------------------
+# media_folder: Physical location where uploaded images are stored
+# public_folder: Path written to Markdown files (using Astro alias ~/)
+# ------------------------------------------------------------------------------
+media_folder: "src/assets/images"
+public_folder: "~/assets/images"
+
+# ------------------------------------------------------------------------------
+# Content Collections
+# ------------------------------------------------------------------------------
+# You can modify these collections based on your content structure.
+# Each collection represents a type of content in your blog.
+# ------------------------------------------------------------------------------
+collections:
+  # ==============================================================================
+  # Collection 1: Insights/Articles
+  # ==============================================================================
+  - name: "insights"
+    label: "Insights Articles"
+    label_singular: "Insight Article"
+    description: "Blog posts and insights articles"
+    folder: "src/data/post/insights"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    identifier_field: "title"
+
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        required: true
+
+      - label: "Publish Date"
+        name: "publishDate"
+        widget: "datetime"
+        required: true
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm:ss"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        required: true
+        pattern: ["^[a-z0-9-]+$", "Slug can only contain lowercase letters, numbers, and hyphens"]
+        hint: "Unique identifier for the URL"
+
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        default: "YOUR_AUTHOR_NAME"
+        required: true
+
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+        required: true
+        hint: "Brief summary displayed on article listing page"
+
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+        required: false
+        allow_multiple: false
+        hint: "Article cover image"
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        allow_add: true
+        hint: "Press Enter to add tags"
+
+      - label: "Canonical URL"
+        name: "metadata.canonical"
+        widget: "string"
+        required: false
+        hint: "Canonical URL for SEO (if different from default)"
+
+      - label: "Content"
+        name: "body"
+        widget: "markdown"
+        required: true
+
+  # ==============================================================================
+  # Collection 2: Knowledge Base
+  # ==============================================================================
+  - name: "knowledge"
+    label: "Knowledge Base"
+    label_singular: "Knowledge Article"
+    description: "Knowledge base and reference articles"
+    folder: "src/data/post/knowledge"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    identifier_field: "title"
+
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        required: true
+
+      - label: "Publish Date"
+        name: "publishDate"
+        widget: "datetime"
+        required: true
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm:ss"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        required: true
+        pattern: ["^[a-z0-9-]+$", "Slug can only contain lowercase letters, numbers, and hyphens"]
+        hint: "Unique identifier for the URL"
+
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        default: "YOUR_AUTHOR_NAME"
+        required: true
+
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+        required: true
+        hint: "Brief summary displayed on article listing page"
+
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+        required: false
+        allow_multiple: false
+        hint: "Article cover image"
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        allow_add: true
+        hint: "Press Enter to add tags"
+
+      - label: "Canonical URL"
+        name: "metadata.canonical"
+        widget: "string"
+        required: false
+        hint: "Canonical URL for SEO (if different from default)"
+
+      - label: "Content"
+        name: "body"
+        widget: "markdown"
+        required: true
+
+  # ==============================================================================
+  # Collection 3: Products/Services
+  # ==============================================================================
+  - name: "products"
+    label: "Products"
+    label_singular: "Product"
+    description: "Product or service showcase articles"
+    folder: "src/data/post/products"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    identifier_field: "title"
+
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        required: true
+
+      - label: "Publish Date"
+        name: "publishDate"
+        widget: "datetime"
+        required: true
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm:ss"
+        format: "YYYY-MM-DDTHH:mm:ssZ"
+
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        required: true
+        pattern: ["^[a-z0-9-]+$", "Slug can only contain lowercase letters, numbers, and hyphens"]
+        hint: "Unique identifier for the URL"
+
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        default: "YOUR_AUTHOR_NAME"
+        required: true
+
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+        required: true
+        hint: "Brief summary displayed on article listing page"
+
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+        required: false
+        allow_multiple: false
+        hint: "Article cover image"
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        allow_add: true
+        hint: "Press Enter to add tags"
+
+      - label: "Canonical URL"
+        name: "metadata.canonical"
+        widget: "string"
+        required: false
+        hint: "Canonical URL for SEO (if different from default)"
+
+      - label: "Content"
+        name: "body"
+        widget: "markdown"
+        required: true

@@ -1,0 +1,18 @@
+---
+/**
+ * SchemaMarkup Component
+ *
+ * 安全地输出 Schema.org JSON-LD 结构化数据
+ * 使用 set:html 避免 Astro 模板编译器对 JSON 大括号的解析问题
+ */
+
+export interface Props {
+  schemas: any[];
+}
+
+const { schemas } = Astro.props;
+---
+
+{schemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

@@ -4,12 +4,12 @@
 # -----------------------------------------------------------------------
 
 site:
-  name: 'Recomby.ai' # [Required] Your blog name (appears in the header & browser tab)
-  site: 'https://hanjinchi7-droid.github.io' # [Required] Your live domain (essential for SEO and Sitemap)
-  base: '/generative-engine-optimization-GEO-blog-template' # [Default]  Sub-path (usually '/', unless deployed at example.com/blog)
+  name: '[Your Site Name]' # [Required] Your blog name (appears in the header & browser tab)
+  site: 'https://your-domain.com' # [Required] Your live domain (essential for SEO and Sitemap)
+  base: '/your-repo-name' # [Default]  Sub-path (usually '/', unless deployed at example.com/blog)
   trailingSlash: false # [Default]  Append trailing slash to URLs (recommended: false)
 
-  subtitle: 'Get Recommended by AI, Not Left Behind by the Times' # [Optional] Custom homepage subtitle (fallbacks to SEO description if empty)
+  subtitle: '[Your Tagline]' # [Optional] Custom homepage subtitle (fallbacks to SEO description if empty)
 
   googleSiteVerificationId: '' # [Optional] Google Search Console verification ID (leave empty if unused)
 
@@ -18,17 +18,17 @@ site:
 # -----------------------------------------------------------------------
 metadata:
   title:
-    default: Recomby.ai # [Required] Default page title
-    template: '%s — Recomby.ai' # [Required] Title template (%s = post title, followed by your brand)
+    default: '[Your Site Name]' # [Required] Default page title
+    template: '%s — [Your Site Name]' # [Required] Title template (%s = post title, followed by your brand)
 
-  description: 'Recomby.ai - Empowering your projects with AI solutions.' # [Required] Default site description (used for SEO & social sharing)
+  description: '[Your Site Description]' # [Required] Default site description (used for SEO & social sharing)
 
   robots:
     index: true
     follow: true
 
   openGraph:
-    site_name: Recomby.ai # [Required] OpenGraph site name (for social media)
+    site_name: '[Your Site Name]' # [Required] OpenGraph site name (for social media)
     images:
       - url: '~/assets/images/default.png' # [Optional] Default sharing image (ensure this file exists in src/assets/images/)
         width: 1200
@@ -36,8 +36,8 @@ metadata:
     type: website
 
   twitter:
-    handle: '@recomby_ai' # [Optional] Your Twitter/X handle (leave empty if none)
-    site: '@recomby_ai'
+    handle: '@your_handle' # [Optional] Your Twitter/X handle (leave empty if none)
+    site: '@your_handle'
     cardType: summary_large_image
 
 # -----------------------------------------------------------------------
@@ -95,3 +95,35 @@ analytics:
 # -----------------------------------------------------------------------
 ui:
   theme: 'system' # [Default]  Options: 'system', 'light', 'dark', 'muted'
+
+# -----------------------------------------------------------------------
+# 🔍 Schema.org 结构化数据配置 (GEO - 生成式引擎优化)
+# -----------------------------------------------------------------------
+# 这部分配置用于生成 Schema.org JSON-LD 结构化数据，有助于：
+#  - 提高 AI 搜索引擎（如 GPT、Claude、Gemini）对你内容的理解
+#  - 在搜索结果中显示更丰富的信息（面包屑、评分等）
+#  - 提升 GEO (Generative Engine Optimization) 效果
+#
+# 快速开始：
+#  1. 将 YOUR_SITE_NAME 替换为你的网站名称
+#  2. 填写你的社交媒体链接（可选，但推荐填写）
+#  3. logo 路径默认指向 /favicon.svg，确保 public 目录有此文件
+# -----------------------------------------------------------------------
+schema:
+  # 组织信息（用于 Organization Schema）
+  organization:
+    name: 'YOUR_SITE_NAME'        # [Required] 网站/组织名称
+    logo: '/favicon.svg'           # [Optional] Logo 路径（相对于 public 目录）
+    email: 'YOUR_EMAIL@example.com' # [Optional] 联系邮箱
+
+  # 社交媒体链接（用于 sameAs 属性）
+  social:
+    github: 'https://github.com/YOUR_USERNAME'    # [Optional] GitHub
+    reddit: 'https://reddit.com/r/YOUR_SUBREDDIT'  # [Optional] Reddit
+    twitter: 'https://twitter.com/YOUR_HANDLE'     # [Optional] Twitter/X
+    linkedin: 'https://linkedin.com/in/YOUR_PROFILE' # [Optional] LinkedIn
+
+  # Schema 功能开关
+  features:
+    enableAutoDetection: true     # [Default] 自动检测 FAQ/HowTo 格式并生成 Schema
+    enableBreadcrumb: true        # [Default] 启用面包屑 Schema

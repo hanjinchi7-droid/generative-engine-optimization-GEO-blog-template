@@ -12,6 +12,9 @@ import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
+import SchemaMarkup from '~/components/common/SchemaMarkup.astro';
+import { generateAllSchemas } from '~/utils/schema-generator';
+import { SITE, SCHEMA } from 'astrowind:config';
 
 export const prerender = true;
 
@@ -25,6 +28,24 @@ const { post } = Astro.props as Props;
 
 const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
+
+// 生成 Schema 结构化数据
+const socialLinks = [
+  SCHEMA.social.github,
+  SCHEMA.social.reddit,
+  SCHEMA.social.twitter,
+  SCHEMA.social.linkedin,
+].filter(Boolean);
+
+const schemas = generateAllSchemas(
+  post,
+  url,
+  post.content || '',
+  SITE.name,
+  SITE.site || '',
+  SCHEMA.organization.logo,
+  socialLinks
+);
 
 const metadata = merge(
   {
@@ -46,6 +67,7 @@ const metadata = merge(
 ---
 
 <Layout metadata={metadata}>
+  <SchemaMarkup schemas={schemas} slot="head" />
   <SinglePost post={{ ...post, image: image }} url={url}>
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>

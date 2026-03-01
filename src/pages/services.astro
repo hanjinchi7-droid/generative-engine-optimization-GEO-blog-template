@@ -1,0 +1,231 @@
+---
+/**
+ * Services Page
+ *
+ * 服务页面模板
+ * 所有真实的公司信息已被替换为占位符
+ */
+
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Services',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Services"
+    title="[Your Hero Title Here]"
+    subtitle="[Your hero subtitle description goes here. Explain what services you offer and why visitors should choose you.]"
+    actions={[{ variant: 'primary', target: '_blank', text: 'Get Started', href: '/contact' }]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
+      alt: 'Hero Image',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Explore our diverse services"
+    subtitle="Discover our selection below to streamline and elevate your projects."
+    columns={3}
+    items={[
+      {
+        title: 'Consulting',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Development',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:home-star',
+      },
+      {
+        title: 'Design',
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+        icon: 'tabler:photo',
+      },
+      {
+        title: 'E-commerce',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:shopping-cart',
+      },
+      {
+        title: 'Content',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:article',
+      },
+      {
+        title: 'Marketing',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:building-store',
+      },
+      {
+        title: 'Branding',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:arrow-big-up-lines',
+      },
+      {
+        title: 'Support',
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+        icon: 'tabler:vaccine',
+      },
+      {
+        title: 'Training',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:tie',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'High-Quality Services',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Customization Options',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Expert Team',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:presentation',
+      },
+      {
+        title: 'Proven Results',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:carousel-horizontal',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      alt: 'Features Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Time Savings',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Professional Quality',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Cost-Effective',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:coin',
+      },
+      {
+        title: 'Quick Delivery',
+        description:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        icon: 'tabler:file-download',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Benefits Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
+    </Fragment>
+  </Content>
+
+  <!-- Testimonials Widget *********** -->
+
+  <Testimonials
+    title="What our clients say"
+    testimonials={[
+      {
+        testimonial: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+        name: '[Client Name 1]',
+        job: '[Job Title]',
+        image: {
+          src: 'https://images.unsplash.com/photo-1618835962148-cf177563c6c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=930&q=80',
+          alt: '[Client Name 1] Image',
+        },
+      },
+      {
+        testimonial: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+        name: '[Client Name 2]',
+        job: '[Job Title]',
+        image: {
+          src: 'https://images.unsplash.com/photo-1561406636-b80293969660?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+          alt: '[Client Name 2] Image',
+        },
+      },
+      {
+        testimonial: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+        name: '[Client Name 3]',
+        job: '[Job Title]',
+        image: {
+          src: 'https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=824&q=80',
+          alt: '[Client Name 3] Image',
+        },
+      },
+    ]}
+    callToAction={{
+      target: '_blank',
+      text: 'Contact us...',
+      href: '/contact',
+      icon: 'tabler:chevron-right',
+    }}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Started',
+        href: '/contact',
+      },
+    ]}
+    title="Ready to get started?"
+    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  />
+</Layout>

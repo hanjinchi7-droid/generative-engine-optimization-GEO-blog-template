@@ -3,9 +3,9 @@
 # 📝 Frontmatter Configuration (Metadata)
 # -----------------------------------------------------------------------
 
-title: 'How to Write a Post: Mastering Content & Images for the AI Era'
+title: '[Your Article Title Here]'
 publishDate: 2026-01-02
-author: Recomby.ai Team
+author: [Your Name]
 
 # 👇 [IMPORTANT] Cover Image Settings
 # Method A (Recommended): Local Image.
@@ -16,25 +16,20 @@ image: '~/assets/images/default.png'
 # Use a direct link. Convenient, but no automatic optimization.
 # image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c'
 
-excerpt: 'A complete template and guide on how to structure your content for GEO (Generative Engine Optimization) and handle images correctly in this blog template.'
+excerpt: '[Your article excerpt that describes what this post is about]'
 
 tags:
-  - Tutorial
-  - Astro
-  - Writing Guide
-  - GEO
+  - Example Tag 1
+  - Example Tag 2
+  - Example Tag 3
 
 metadata:
-  canonical: https://recomby.ai/blog/markdown-style-guide
+  canonical: https://your-domain.com/blog/your-post-slug
 ---
 
 Welcome to your new blog!
 
 This article serves as both a **demo** and a **user manual**. You can duplicate this file to start writing your next post.
-
-As stated in the Recomby.ai philosophy: **"In the age of AI search, we help the 'best match' defeat the 'loudest voice'."**
-
-Therefore, our writing is not just for humans, but also for AI agents. Structured, clear content is more likely to be cited and recommended by AI models.
 
 ## I. Image Handling Guide (Crucial)
 
@@ -83,19 +78,16 @@ Here is how to insert images directly into your text.
     ![My Local Image](~/assets/images/default.png)
 
 **Result (What you see):**
-_(This will render your local 'default.png' file)_
 
 ![My Local Image](~/assets/images/default.png)
 
-## II. Writing for AI (GEO Strategy)
+## II. Writing Best Practices
 
 To ensure your content is selected as an answer by AI engines (like ChatGPT, Perplexity), follow these rules:
 
 1.  **Clear Structure:** Use clear H2 (`##`) and H3 (`###`) headings.
 2.  **Modularity:** Break down long paragraphs into bullet points (like this list).
 3.  **Accuracy:** Carefully fill in the `tags` and `excerpt` in the file header.
-
-> "We don't mine gold, we sell shovels. We build the authority that AI trusts." — Recomby.ai
 
 ## III. Markdown Syntax Quick Reference
 
@@ -117,4 +109,19 @@ You can make text **bold**, _italic_, or use `code style` for emphasis.
 ## IV. Conclusion
 
 Now you are ready.
-Duplicate this file, rename it, and start creating high-quality content that is **"worthy of being recommended by AI"**!
+
+Duplicate this file, rename it, and start creating high-quality content!
+
+## FAQ Example
+
+### How do I create a new post?
+
+Simply duplicate this file, rename it, and edit the frontmatter and content.
+
+### What image formats are supported?
+
+You can use PNG, JPG, WebP, and other common formats. Local images are automatically optimized by Astro.
+
+### Can I use custom CSS?
+
+Yes, you can add custom styles in the component files or use Tailwind CSS classes directly in your markdown.

@@ -1,6 +1,21 @@
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { HTMLAttributes, ImageMetadata } from 'astro/types';
 
+// Netlify Identity global type declaration
+declare global {
+  interface Window {
+    netlifyIdentity?: {
+      on: (event: string, callback: (user?: any) => void) => void;
+      init: () => void;
+      logout: () => void;
+      open: () => void;
+      currentUser?: any;
+    };
+  }
+}
+
+export {};
+
 export interface Post {
   /** A unique ID number that identifies a post. */
   id: string;
@@ -39,6 +54,13 @@ export interface Post {
   /**  */
   Content?: AstroComponentFactory;
   content?: string;
+
+  /**  */
+  headings?: Array<{
+    depth: number;
+    text: string;
+    slug: string;
+  }>;
 
   /**  */
   readingTime?: number;
