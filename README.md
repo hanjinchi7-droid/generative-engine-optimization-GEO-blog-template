@@ -1,195 +1,307 @@
-# 🚀 Recomby.ai Website Source
+# 🚀 GEO-Ready Blog Template
 
-> **"In the age of AI Search, Precision Beats Power."**
+<div align="center">
 
-This repository contains the source code for [Recomby.ai](https://blog.recomby.ai), a high-performance website template built using **[Astro 5.0](https://astro.build/)** and **[Tailwind CSS](https://tailwindcss.com/)**.
+**[AI Search Optimized](https://github.com/topics/ai-search)** • **[Schema.org](https://github.com/topics/schema)** • **[Astro](https://astro.build)**
 
-It is heavily customized to follow **GEO (Generative Engine Optimization)** standards, ensuring content is structured effectively for both human readers and AI agents (ChatGPT, Perplexity, etc.).
+The production-ready **GEO (Generative Engine Optimization)** blog template designed for B2B marketing and AI-driven search engines.
 
-<br>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Astro](https://img.shields.io/badge/Astro-^7.0.0-orange?logo=astro)](https://astro.build)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
 
-## ✨ Key Features
+[Quick Start](#-quick-start) • [Features](#-features) • [Deployment](#-deployment) • [Configuration](#-configuration) • [AI Agent Setup](#-for-ai-agents)
 
-- **⚡️ High Performance**: Powered by Astro, scoring 100/100 on PageSpeed Insights.
-- **🤖 GEO Ready**: Content structure optimized for AI Search and LLM retrieval.
-- **🛠 Simplified Configuration**:
-  - **Global Settings**: Managed via a single `src/config.yaml`.
-  - **Navigation**: Menu and footer links managed in `src/navigation.ts`.
-  - **Page Config**: Complex pages (like `About`) use a "Local Configuration Object" pattern for easy editing.
-- **🎨 Tailwind CSS**: Fully responsive design with Dark Mode support.
-- **📝 Markdown/MDX**: Structured blogging system with automatic image optimization.
-- **🖼️ Image Optimization**: Built-in support for next-gen image formats (WebP).
+</div>
 
-<br>
+---
 
-## 🛠 Getting Started
+## 🎯 Project Positioning
 
-### 1. Installation
+This is **not just another blog template**. It's a purpose-built **GEO (Generative Engine Optimization)** marketing foundation designed specifically for the AI search era.
 
-Clone the repository and install dependencies:
+Unlike traditional templates focused on SEO (Search Engine Optimization) for Google/Bing, this template is optimized for **AI-driven answer engines** like ChatGPT, Claude, Perplexity, and Gemini.
 
-```shell
+**Key Philosophy:**
+> "In the age of AI search, **'The Best Match' defeats 'The Loudest Voice'**."
+
+---
+
+## ✨ Core Features
+
+### 🤖 AI Search Optimization (GEO)
+
+- **Auto-generated Schema.org Structured Data**
+  - FAQ Schema (auto-detected from Markdown)
+  - HowTo Schema (auto-detected from numbered lists)
+  - Breadcrumb Schema
+  - Organization Schema
+  - BlogPosting Schema
+
+- **Article Table of Contents (TOC)**
+  - Auto-generated from h2/h3 headings
+  - Scroll spy with active highlighting
+  - Smooth scrolling navigation
+  - Responsive: hidden on mobile, sticky sidebar on desktop
+
+- **Dynamic Dual-Column Layout**
+  - Content + TOC side-by-side on desktop
+  - Single-column on mobile
+  - Optimized reading experience
+
+### 🎨 Content Management
+
+- **Decap CMS (formerly Netlify CMS) Integration**
+  - Multi-collection support (insights, knowledge, products)
+  - Netlify Identity authentication
+  - Admin panel at `/admin/`
+  - Zero hard-coded business data (fully customizable)
+
+- **Pre-built High-Converting Pages**
+  - Contact page with form and support info
+  - Services page with hero, features, and testimonials
+  - Fully customizable with placeholder content
+
+### ⚡ Performance & Quality
+
+- **Lighthouse Optimized**
+  - High scores out of the box
+  - Optimized images with multiple formats (WebP, AVIF)
+  - CSS/JS compression
+  - Lazy loading
+
+- **Modern Tech Stack**
+  - **Astro** - Lightning-fast static site generator
+  - **Tailwind CSS** - Utility-first styling
+  - **TypeScript** - Type-safe development
+  - **MDX Support** - Enhanced Markdown
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js >= 18.14.1
+- npm or yarn or pnpm
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/hanjinchi7-droid/generative-engine-optimization-GEO-blog-template.git
+cd generative-engine-optimization-GEO-blog-template
+
+# Install dependencies
 npm install
-```
 
-### 2. Development
-
-Start the local development server:
-
-```shell
+# Start development server
 npm run dev
 ```
 
-Visit `http://localhost:4321` to see your site.
+### 📝 Configuration Checklist
 
-### 3. Build for Production
+To customize this template for your brand, modify the following files:
 
-Generate the static files for deployment:
-
-```shell
-npm run build
-```
-
-<br>
-
-## ⚙️ Configuration Guide
-
-We have streamlined the configuration process so you don't need to dig into deep code.
-
-### 1. Global Site Configuration
-
-Edit **`src/config.yaml`** to change site-wide metadata, SEO settings, and feature toggles.
+#### 1. Site Configuration (`src/config.yaml`)
 
 ```yaml
 site:
-  name: 'Recomby.ai'
-  site: 'https://recomby.ai'
+  name: 'Your Company Name'          # Your brand name
+  site: 'https://your-domain.com'     # Your live site URL
+  base: '/your-repo-name'            # See Deployment section below
+  trailingSlash: false
 
 metadata:
   title:
-    default: 'Recomby.ai'
-    template: '%s — Recomby.ai'
-  description: 'AI Search Optimization & Agent API Infrastructure.'
+    default: 'Your Company Name'
+    template: '%s — Your Company Name'
+  description: 'Your site description'
+
+  twitter:
+    handle: '@your_handle'
+    site: '@your_handle'
+
+schema:
+  organization:
+    name: 'Your Company Name'
+    logo: '/favicon.svg'
+    email: 'your-email@example.com'
+  social:
+    github: 'https://github.com/your-username'
+    reddit: 'https://reddit.com/r/your_subreddit'
+    twitter: 'https://twitter.com/your_handle'
+    linkedin: 'https://linkedin.com/in/your-profile'
 ```
 
-### 2. Navigation (Menu & Footer)
+#### 2. Navigation (`src/navigation.ts`)
 
-Edit **`src/navigation.ts`** to modify the Header links, Footer columns, and Social icons.
+Update footer links and social links:
 
-### 3. Page-Specific Configuration (e.g., About Page)
+```typescript
+{
+  title: 'Connect',
+  links: [
+    { text: 'GitHub', href: 'https://github.com/your-username/your-repo' },
+    { text: 'Reddit', href: 'https://www.reddit.com/r/your_subreddit' },
+    { text: 'Email', href: 'mailto:your-email@example.com' },
+  ],
+}
+```
 
-For complex landing pages like `About`, we use a **Local Configuration Object** at the top of the file.
-Go to `src/pages/about.astro` and edit the `aboutData` constant at the top.
+#### 3. Decap CMS (`public/admin/config.yml`)
 
-<br>
+Update for your repository:
+
+```yaml
+backend:
+  name: git-gateway
+  branch: main
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME  # Change this!
+
+site_url: https://your-domain.com           # Change this!
+display_url: https://your-domain.com        # Change this!
+cms_url: https://admin.your-domain.com     # Optional
+```
+
+---
+
+## 🌐 Deployment
+
+### GitHub Pages
+
+#### Option A: Custom Domain
+```yaml
+# src/config.yaml
+site: 'https://your-domain.com'
+base: '/'
+```
+
+#### Option B: GitHub Pages Subdirectory (username.github.io/repo-name)
+
+**⚠️ CRITICAL:** You must set `base` to your repository name!
+
+```yaml
+# src/config.yaml
+site: 'https://username.github.io'
+base: '/your-repo-name'    # Matches your GitHub repository name
+```
+
+Your site will be available at: `https://username.github.io/repo-name/`
+
+**Common Issue:** If CSS doesn't load, check that `base` in `src/config.yaml` matches your repository name exactly.
+
+### Other Platforms
+
+- **Vercel** - Works out of the box
+- **Netlify** - Works out of the box
+- **Cloudflare Pages** - Works out of the box
+
+---
 
 ## 📂 Project Structure
 
-Inside the project, you'll see the following folders and files:
-
-```text
-templete
-├── LICENSE.md
-├── README.md
-├── astro.config.ts
-├── eslint.config.js
-├── netlify.toml
-├── package.json
-├── public                  # Static assets
-│   ├── CNAME
-│   ├── _headers
-│   ├── decapcms
-│   │   ├── config.yml
-│   │   └── index.html
-│   └── robots.txt
-├── src
-│   ├── assets
-│   │   ├── favicons
-│   │   ├── images          # Post covers and project images
-│   │   └── styles
-│   ├── components          # Reusable UI components
-│   │   ├── CustomStyles.astro
-│   │   ├── Favicons.astro
-│   │   ├── Logo.astro
-│   │   ├── blog
-│   │   ├── common
-│   │   ├── ui
-│   │   └── widgets
-│   ├── config.yaml         # Site-wide configuration file
-│   ├── content
-│   │   └── config.ts
-│   ├── data
-│   │   └── post            # Markdown content for blog posts
-│   ├── env.d.ts
-│   ├── layouts             # Page layouts
-│   │   ├── LandingLayout.astro
-│   │   ├── Layout.astro
-│   │   ├── MarkdownLayout.astro
-│   │   └── PageLayout.astro
-│   ├── navigation.ts       # Menu and footer links
-│   ├── pages
-│   │   ├── 404.astro
-│   │   ├── [...blog]
-│   │   │   ├── [category]
-│   │   │   ├── [tag]
-│   │   │   └── [...page].astro  # Homepage
-│   │   ├── about.astro     # About page and config
-│   │   ├── privacy.md
-│   │   ├── rss.xml.ts
-│   │   ├── tags.astro
-│   │   └── terms.md
-│   ├── types.d.ts
-│   └── utils
-│       ├── blog.ts
-│       ├── directories.ts
-│       ├── frontmatter.ts
-│       ├── images-optimization.ts
-│       ├── images.ts
-│       ├── permalinks.ts
-│       └── utils.ts
-├── tailwind.config.js
-├── tsconfig.json
-├── vendor
-│   ├── README.md
-│   └── integration
-│       ├── index.ts
-│       ├── types.d.ts
-│       └── utils
-└── vercel.json
+```
+template/
+├── public/
+│   ├── admin/              # Decap CMS configuration
+│   │   ├── config.yml       # CMS collection definitions
+│   │   └── index.html       # Admin login redirect
+│   └── favicon.svg
+│
+├── src/
+│   ├── components/
+│   │   ├── blog/            # Blog components (SinglePost, TOC, etc.)
+│   │   ├── common/          # Common components (Image, SchemaMarkup, etc.)
+│   │   └── widgets/         # Page widgets (Hero, Features, Contact, etc.)
+│   │
+│   ├── config.yaml          # 🔑 Main configuration file
+│   ├── layouts/             # Page layouts
+│   ├── pages/               # Pages (contact, services, blog, etc.)
+│   ├── types/               # TypeScript type definitions
+│   └── utils/               # Utilities (Schema generator, etc.)
+│
+├── astro.config.ts          # Astro configuration
+└── package.json
 ```
 
-<br>
+---
 
-## ✍️ Writing Content (GEO Strategy)
+## 🎨 Customization Guide
 
-We follow strict **AI-Friendly Writing Guidelines** to ensure content is "Best Match" for AI queries.
+### Adding Blog Posts
 
-Please refer to the template file in `src/data/post/markdown-style-guide.md` for details.
+Blog posts are stored in `src/data/post/`. Create a new `.md` file:
 
-**Quick Rules:**
+```yaml
+---
+publishDate: 2026-01-02T12:00:00Z
+author: Your Name
+title: Your Article Title
+excerpt: Your article description
+image: ~/assets/images/your-image.png
+tags:
+  - Example Tag
+  - Another Tag
+---
 
-1.  **Location**: Create your `.md` files in **`src/data/post/`**.
-2.  **Structure**: Use clear H2/H3 headings.
-3.  **Images**:
-    - **Local**: Place in `src/assets/images/` and reference as `~/assets/images/name.png`.
-    - **Remote**: Use direct URLs.
-4.  **Frontmatter**: Always fill in `tags` and `excerpt` accurately for AI indexing.
+# Your content here
 
-<br>
+## Introduction
 
-## 🚀 Deployment
+Write your article...
 
-This project is ready to be deployed to **Vercel**, **Netlify**, or any static hosting service.
+## FAQ Example
 
-**Vercel (Recommended):**
+### What is this about?
 
-1.  Push your code to GitHub.
-2.  Import the project in Vercel.
-3.  The framework preset should automatically detect **Astro**.
-4.  Click **Deploy**.
+This is an FAQ item that will be automatically detected and converted to Schema.org FAQPage.
 
-<br>
+### How does it work?
+
+Another FAQ item...
+
+## HowTo Example
+
+1. First step
+2. Second step
+3. Third step
+
+(Will be automatically converted to Schema.org HowTo schema)
+```
+
+### Schema.org Auto-Detection
+
+The template automatically detects and generates Schema.org structured data for:
+
+- **FAQ Format**: Questions starting with `###` followed by answers
+- **HowTo Format**: Numbered lists (`1. Step one`, `2. Step two`)
+- **Headings**: All h2/h3 headings for Table of Contents
+
+---
+
+## 🔧 For AI Agents
+
+**If you are an AI Agent (ChatGPT, Claude, etc.) helping a user customize this template, please read [`AGENT_SETUP.md`](AGENT_SETUP.md) for detailed instructions on how to assist users effectively.**
+
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License. Based on the open-source work of [AstroWind](https://github.com/onwidget/astrowind).
+MIT License - feel free to use this template for personal or commercial projects.
+
+---
+
+## 🙏 Acknowledgments
+
+Built with [Astro](https://astro.build) and based on [AstroWind](https://github.com/onwidget/astrowind).
+
+---
+
+<div align="center">
+
+**Made with ❤️ for the AI Search Era**
+
+[⭐ Star this repo](https://github.com/hanjinchi7-droid/generative-engine-optimization-GEO-blog-template) • [🐛 Report Issues](https://github.com/hanjinchi7-droid/generative-engine-optimization-GEO-blog-template/issues)
+
+</div>
