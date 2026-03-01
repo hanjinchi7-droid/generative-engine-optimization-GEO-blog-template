@@ -1,6 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import fs from 'fs'; 
+import fs from 'fs';
 
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
@@ -16,17 +16,25 @@ import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehype
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-
+// Read config.yaml to get site URL and base path
 const configYaml = fs.readFileSync(path.resolve(__dirname, './src/config.yaml'), 'utf8');
 
-
+// Extract site URL from config.yaml (e.g., "https://example.com")
 const domainMatch = configYaml.match(/^\s+site:\s*['"]?(https?:\/\/[^'"\s\n\r]+)['"]?/m);
 
+// Extract base path from config.yaml (e.g., "/blog" or "/repo-name")
+// IMPORTANT: This is critical for GitHub Pages subdirectory deployments!
 const baseMatch = configYaml.match(/^\s+base:\s*['"]?([^'"\s\n\r]+)['"]?/m);
-
 
 const SITE_URL = domainMatch ? domainMatch[1].trim() : 'https://example.com';
 const BASE_PATH = baseMatch ? baseMatch[1].trim() : '/';
+
+// 📝 Base Path Configuration Note:
+// The 'base' value determines where your site is deployed:
+// - '/' = Root domain or custom domain
+// - '/your-repo-name' = GitHub Pages subdirectory (e.g., username.github.io/your-repo-name)
+//
+// For GitHub Pages users: Make sure 'base' in src/config.yaml matches your repository name!
 
 const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>

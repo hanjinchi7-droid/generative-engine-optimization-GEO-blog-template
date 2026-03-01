@@ -6,7 +6,36 @@
 site:
   name: '[Your Site Name]' # [Required] Your blog name (appears in the header & browser tab)
   site: 'https://your-domain.com' # [Required] Your live domain (essential for SEO and Sitemap)
-  base: '/your-repo-name' # [Default]  Sub-path (usually '/', unless deployed at example.com/blog)
+
+  # -------------------------------------------------------------------
+  # 🔧 Base Path Configuration (IMPORTANT for GitHub Pages & Subdirectory Deploy)
+  # -------------------------------------------------------------------
+  # What is 'base'?
+  #   This is the sub-path where your site will be deployed. All asset URLs (CSS, JS, images)
+  #   will be prefixed with this value.
+  #
+  # Quick Start Guide:
+  #
+  # 1️⃣ GitHub Pages (username.github.io format - custom domain)
+  #    base: '/'  (Leave as '/')
+  #
+  # 2️⃣ GitHub Pages (username.github.io/REPO-NAME format)
+  #    base: '/your-repo-name'
+  #    Example: If your repo is 'my-blog', use base: '/my-blog'
+  #    Your site will be: https://username.github.io/my-blog/
+  #
+  # 3️⃣ Custom Domain (https://yourdomain.com)
+  #    base: '/'  (Always use '/' for custom domains)
+  #
+  # 4️⃣ Subdirectory of existing site (https://yourdomain.com/blog)
+  #    base: '/blog'
+  #
+  # ⚠️ COMMON MISTAKE: If you're deploying to GitHub Pages with a repo name,
+  #    you MUST set base to your repo name (e.g., '/my-blog'), NOT '/'.
+  #    Otherwise your CSS and assets will fail to load!
+  # -------------------------------------------------------------------
+  base: '/generative-engine-optimization-GEO-blog-template'
+
   trailingSlash: false # [Default]  Append trailing slash to URLs (recommended: false)
 
   subtitle: '[Your Tagline]' # [Optional] Custom homepage subtitle (fallbacks to SEO description if empty)
