@@ -62,6 +62,31 @@ Before making any code changes, you **MUST** ask the user the following question
    - Physical address
    - Alternative contact methods
 
+#### About Page Content (Critical for Compelling Storytelling)
+9. **"Please describe your company's core mission and vision in a few sentences."**
+   - What drives your company? What impact do you want to make?
+   - This will help craft the hero section and philosophy content
+
+10. **"When was your company founded? What key milestones or achievements define your journey?"**
+    - Founding year, major achievements, growth metrics
+    - This will be used to build credibility and trust
+
+11. **"Tell me about your core team or company culture."**
+    - What makes your team unique? What values guide you?
+    - This will personalize the philosophy and "Why Choose Us" sections
+
+12. **"What are the top 4 core values or principles that define how you work?"**
+    - For each value, provide a brief explanation
+    - These will populate the Core Philosophy grid (4 items)
+
+13. **"What are your top 3 core services or offerings? Please provide a 2-3 sentence description for each."**
+    - Focus on your flagship services
+    - These will populate the Services section on the About page
+
+14. **"What is your company's unique value proposition? Why should clients choose you over competitors?"**
+    - Your key differentiator in the market
+    - This will shape the "Why Choose Us" section
+
 ---
 
 ## 📋 Execution Map
@@ -129,13 +154,39 @@ Once you have collected the user's information, use this map to make precise, ta
 
 ### File: `src/pages/about.astro`
 
-| User Input | Target Section | Notes |
-|------------|---------------|------|
-| Company name | `metadata.title` | Page title |
-| Company name | `hero.tagline` | Hero tagline |
-| About description | `hero.title` & `hero.subtitle` | Main heading |
-| Company philosophy | `corePhilosophy.items` | 4 items with title/description/icon |
-| Company services | `services.items` | 3 services with title/description/icon |
+> **🎯 CONTENT GENERATION INSTRUCTIONS FOR AI AGENTS:**
+>
+> This page contains 7 major sections with [YOUR_...] placeholders. **DO NOT simply replace these with user's raw answers.**
+>
+> Instead, use your LLM capabilities to:
+> 1. **Expand** brief answers into compelling, professional copy
+> 2. **Enhance** language with persuasive business terminology
+> 3. **Structure** content for maximum impact (HTML formatting, emphasis, etc.)
+> 4. **Maintain** brand voice consistency across all sections
+>
+> For example, if user says "We help startups grow," expand to:
+> *"We empower emerging startups to scale with confidence through strategic guidance, cutting-edge technology solutions, and a proven framework for sustainable growth."*
+
+| User Input | Target Section | Content Generation Notes |
+|------------|---------------|------------------------|
+| Company name | `metadata.title` | Direct substitution |
+| Company name | `hero.tagline` | Format: "About [Company Name]" |
+| Mission/vision | `hero.title` | **Expand** into: "In the age of [industry/innovation focus], [your value proposition as highlighted text]"<br>Use HTML: `<span class="text-accent dark:text-white highlight">` for emphasis |
+| Company pitch | `hero.subtitle` | **Expand** user's description into 1-2 compelling sentences about their business and impact |
+| Core values | `corePhilosophy.title` | "Our Core Philosophy" or "What Drives Us" |
+| Core values | `corePhilosophy.subtitle` | **Write** a short phrase explaining how these values guide their work |
+| Core values (4 items) | `corePhilosophy.items[0-3]` | **For each value**: Expand into short title + very brief description<br>Icons: tabler:rocket, tabler:target, tabler:shield, tabler:trophy |
+| Mission/vision | `philosophyDetails.title` | "Our Philosophy" or "How We Work" |
+| Company story/culture | `philosophyDetails.items[0-3]` | **Expand** user's answers into 4 principle items (title + 1-2 sentence description)<br>Icons: tabler:trophy, tabler:target, tabler:thumb-up, tabler:sparkles |
+| Services | `services.title` | "Our Core Services" or "What We Do" |
+| Services | `services.subtitle` | **Write** a compelling subtitle about their expertise and dedication |
+| Services (3 items) | `services.items[0-2]` | **For each service**: Expand title + 2-3 sentence description<br>Icons: tabler:rocket, tabler:brain, tabler:shield-check |
+| Value proposition | `whyUs.title` | "Why [Company Name]?" |
+| Competitive advantage | `whyUs.subtitle` | **Write** a compelling statement about how they're different |
+| Unique approach | `whyUs.items[0-2]` | **Create** a 3-step narrative: Challenge → Solution → Outcome<br>Each: title + 1-2 sentence description<br>Icons: tabler:alert-circle, tabler:sun, tabler:check |
+| Company name | `cta.title` | "Ready to Get Started?" or "Let's Work Together" |
+| Call to action | `cta.subtitle` | **Write** 1-2 compelling sentences encouraging action |
+| CTA buttons | `cta.primaryAction/secondaryAction` | Update button text and hrefs (default: /contact and /services) |
 
 ---
 
@@ -193,6 +244,9 @@ Before telling the user you're done, verify:
 - [ ] All social links are functional or commented with TODO
 - [ ] Company information is consistent across all pages
 - [ ] No hardcoded business data remains (except user-provided content)
+- [ ] **About page**: All [YOUR_...] placeholders replaced with expanded, professional content
+- [ ] **About page**: Hero title uses proper HTML formatting for emphasized text
+- [ ] **About page**: All sections populated with compelling copy (not raw user answers)
 
 ---
 

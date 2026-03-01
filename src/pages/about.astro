@@ -1,4 +1,14 @@
 ---
+/**
+ * About Page
+ *
+ * Company introduction page with fully customizable content placeholders
+ * All content has been extracted into the aboutData object for easy AI agent customization
+ *
+ * AI AGENTS: This page is designed to be customized by replacing the placeholder
+ * values in the aboutData object below. Each placeholder is clearly marked with [YOUR_...]
+ */
+
 import Features2 from '~/components/widgets/Features2.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Hero from '~/components/widgets/Hero.astro';
@@ -6,145 +16,191 @@ import Steps2 from '~/components/widgets/Steps2.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
-// -----------------------------------------------------------------------
-// ⚙️ About Page Configuration (Edit content here)
-// -----------------------------------------------------------------------
+// ========================================================================
+// 🎯 ABOUT PAGE CONFIGURATION
+// ========================================================================
+//
+// AI AGENTS & DEVELOPERS:
+// All page content is centralized here. Replace the placeholders below with
+// your company's actual information to customize this page.
+//
+// Each section is marked with clear comments explaining what content should go there.
+//
+// ========================================================================
 
 const aboutData = {
-  // 1. Page Metadata
+  // ========================================================================
+  // 1. PAGE METADATA
+  // ========================================================================
   metadata: {
-    title: 'About [Your Site Name]',
+    title: '[YOUR_SITE_NAME]', // Page title shown in browser tab
   },
 
-  // 2. Hero Section
+  // ========================================================================
+  // 2. HERO SECTION
+  // ========================================================================
   hero: {
-    tagline: 'About [Your Site Name]',
-    // Note: HTML tags like <br/> and <span> are supported here for styling
+    tagline: 'About [YOUR_SITE_NAME]', // Badge/tagline above the title
+
+    // Main heading - can include HTML for styling
     title:
-      'In the age of innovation, <br /> <span class="text-accent dark:text-white highlight"> Excellence Speaks</span>',
-    subtitle:
-      '[Your Site Name] is a forward-thinking company specializing in <strong>[Your Core Business Area]</strong> and <strong>[Your Secondary Focus]</strong>. We help our clients achieve their goals through innovation and expertise.',
+      'In the age of [YOUR_INNOVATION_FOCUS], <br /> <span class="text-accent dark:text-white highlight">[YOUR_VALUE_PROPOSITION]</span>',
+    // Example: 'In the age of AI, <br /> <span class="text-accent dark:text-white highlight">Precision Beats Power</span>'
+
+    // Subtitle/description - your company's core business description
+    subtitle: '[YOUR_COMPANY_ONE_SENTENCE_PITCH]',
+    // Example: '[Your Company] is a forward-thinking company specializing in [Your Core Business] and [Your Secondary Focus]. We help our clients achieve [Target Outcome] through innovation and expertise.'
+
+    // Hero background image
     image: {
       src: 'https://images.unsplash.com/photo-1604871000636-074fa5117945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Abstract geometric data structure',
+      alt: 'Abstract business background',
     },
   },
 
-  // 3. Core Philosophy (4 Grid Items)
+  // ========================================================================
+  // 3. CORE PHILOSOPHY (4 Grid Items - Top Section)
+  // ========================================================================
+  // Displayed as a 4-column grid below the hero section
+  // Each item: title (short), description (very short), icon
   corePhilosophy: {
-    title: 'Ready for the Future?',
-    subtitle: 'Our core philosophy defines how we build for the future.',
+    title: '[YOUR_CORE_VALUES_TITLE]',
+    // Example: 'Our Core Philosophy' or 'What Drives Us'
+    subtitle: '[YOUR_CORE_VALUES_SUBTITLE]',
+    // Example: 'Our core philosophy defines how we build for the future.'
     items: [
-      { title: 'Innovation', description: 'First Priority', icon: 'tabler:robot' },
-      { title: 'Quality', description: 'Our Focus', icon: 'tabler:target' },
-      { title: 'Structure', description: 'Our Approach', icon: 'tabler:box-model-2' },
-      { title: 'Excellence', description: 'Our Goal', icon: 'tabler:trophy' },
+      { title: '[PHILOSOPHY_1_TITLE]', description: '[PHILOSOPHY_1_DESC]', icon: 'tabler:rocket' },
+      { title: '[PHILOSOPHY_2_TITLE]', description: '[PHILOSOPHY_2_DESC]', icon: 'tabler:target' },
+      { title: '[PHILOSOPHY_3_TITLE]', description: '[PHILOSOPHY_3_DESC]', icon: 'tabler:shield' },
+      { title: '[PHILOSOPHY_4_TITLE]', description: '[PHILOSOPHY_4_DESC]', icon: 'tabler:trophy' },
     ],
   },
 
-  // 4. Philosophy Details (Split Layout)
+  // ========================================================================
+  // 4. PHILOSOPHY DETAILS (Split Layout - Left: List, Right: Image)
+  // ========================================================================
+  // Displayed as a 2-column section with an image
+  // Each item: title, description (1-2 sentences), icon
   philosophyDetails: {
-    title: 'Our Philosophy',
+    title: '[YOUR_COMPANY_PHILOSOPHY_TITLE]',
+    // Example: 'Our Philosophy' or 'How We Work'
     items: [
       {
-        title: 'Quality Over Quantity',
-        description:
-          'Delivering exceptional results matters more than doing more. We help you succeed through focused expertise.',
+        title: '[PRINCIPLE_1_TITLE]',
+        description: '[PRINCIPLE_1_FULL_DESCRIPTION]',
         icon: 'tabler:trophy',
       },
       {
-        title: 'Precision Over Power',
-        description:
-          'Targeted solutions win over broad approaches. We focus on high-value, specific outcomes.',
+        title: '[PRINCIPLE_2_TITLE]',
+        description: '[PRINCIPLE_2_FULL_DESCRIPTION]',
         icon: 'tabler:target',
       },
       {
-        title: 'Sustainable Growth',
-        description: 'Build for the long term. Don\'t chase short-term trends at the expense of lasting value.',
+        title: '[PRINCIPLE_3_TITLE]',
+        description: '[PRINCIPLE_3_FULL_DESCRIPTION]',
         icon: 'tabler:thumb-up',
       },
       {
-        title: 'Future-Ready',
-        description: 'From traditional to modern. Build for tomorrow\'s challenges, not just today\'s needs.',
-        icon: 'tabler:robot',
+        title: '[PRINCIPLE_4_TITLE]',
+        description: '[PRINCIPLE_4_FULL_DESCRIPTION]',
+        icon: 'tabler:sparkles',
       },
     ],
     image: {
       src: 'https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Structured data blocks',
+      alt: 'Company philosophy visualization',
     },
   },
 
-  // 5. Core Services
+  // ========================================================================
+  // 5. CORE SERVICES (3-Column Grid)
+  // ========================================================================
+  // Displayed as a 3-column grid with icons
+  // Each service: title, description (2-3 sentences), icon
   services: {
-    title: 'Our Core Services',
-    subtitle: 'We deliver results through expertise, innovation, and dedication to your success.',
+    title: '[YOUR_SERVICES_TITLE]',
+    // Example: 'Our Core Services' or 'What We Do'
+    subtitle: '[YOUR_SERVICES_SUBTITLE]',
+    // Example: 'We deliver results through expertise, innovation, and dedication.'
     items: [
       {
-        title: '[Service Area 1]',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        icon: 'tabler:seo',
+        title: '[SERVICE_1_NAME]',
+        description: '[SERVICE_1_DESCRIPTION_2_3_SENTENCES]',
+        icon: 'tabler:rocket',
       },
       {
-        title: '[Service Area 2]',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        icon: 'tabler:api',
+        title: '[SERVICE_2_NAME]',
+        description: '[SERVICE_2_DESCRIPTION_2_3_SENTENCES]',
+        icon: 'tabler:brain',
       },
       {
-        title: '[Service Area 3]',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        icon: 'tabler:database',
+        title: '[SERVICE_3_NAME]',
+        description: '[SERVICE_3_DESCRIPTION_2_3_SENTENCES]',
+        icon: 'tabler:shield-check',
       },
     ],
   },
 
-  // 6. Why Choose Us (Steps)
+  // ========================================================================
+  // 6. WHY CHOOSE US (Steps/Process Section)
+  // ========================================================================
+  // Displayed as a horizontal process/timeline
+  // Each item: title, description (1-2 sentences), icon
   whyUs: {
-    title: 'Why [Your Site Name]?',
-    subtitle: 'The rules of the game have changed. Traditional approaches are fading; innovation is the future.',
+    title: 'Why [YOUR_SITE_NAME]?',
+    subtitle: '[WHY_YOU_SUBTITLE]',
+    // Example: 'The rules of the game have changed. Traditional approaches are fading; innovation is the future.'
     items: [
       {
-        title: 'The Challenge',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Traditional approaches no longer deliver results.',
+        title: '[STEP_1_TITLE]',
+        // Example: 'The Challenge'
+        description: '[STEP_1_DESCRIPTION]',
         icon: 'tabler:alert-circle',
       },
       {
-        title: 'Our Solution',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. We create tailored solutions for your needs.',
-        icon: 'tabler:adjustments',
+        title: '[STEP_2_TITLE]',
+        // Example: 'Our Solution'
+        description: '[STEP_2_DESCRIPTION]',
+        icon: 'tabler:sun',
       },
       {
-        title: 'The Outcome',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Your goals become reality.',
+        title: '[STEP_3_TITLE]',
+        // Example: 'The Outcome'
+        description: '[STEP_3_DESCRIPTION]',
         icon: 'tabler:check',
       },
     ],
   },
 
-  // 7. Call to Action (CTA)
+  // ========================================================================
+  // 7. CALL TO ACTION (Bottom Section)
+  // ========================================================================
   cta: {
-    title: 'Ready to Get Started?',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    title: '[CTA_MAIN_TITLE]',
+    // Example: 'Ready to Get Started?' or 'Let\'s Work Together'
+    subtitle: '[CTA_SUBTITLE_1_2_SENTENCES]',
+    // Example: 'Contact us today to discuss how we can help you achieve your goals.'
     primaryAction: {
-      text: 'Contact Us',
+      text: '[CTA_PRIMARY_BUTTON_TEXT]',
+      // Example: 'Contact Us' or 'Get Started'
       href: '/contact',
       icon: 'tabler:mail',
     },
     secondaryAction: {
-      text: 'Learn More',
+      text: '[CTA_SECONDARY_BUTTON_TEXT]',
+      // Example: 'View Our Work' or 'Learn More'
       href: '/services',
-      icon: 'tabler:brand-reddit',
+      icon: 'tabler:arrow-right',
     },
   },
 };
 
-// -----------------------------------------------------------------------
-// 🧩 Layout Components (Page Structure - No need to edit below)
-// -----------------------------------------------------------------------
+// ========================================================================
+// 🎨 LAYOUT COMPONENTS (Page Structure)
+// ========================================================================
+// The following code renders the page using the aboutData configuration above.
+// No need to modify below unless you want to change the page structure.
+// ========================================================================
 ---
 
 <Layout metadata={aboutData.metadata}>
